@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpendWise - Quản Lý Giao Dịch</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- FontAwesome Icon làm dự phòng -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Overlay mờ nền khi mở Mobile Menu -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="brand">
+                <div class="brand-title">
+                    <img src="assets/images/logo.svg" alt="SpendWise Logo" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="logo-icon" style="display: none;">S</div>
+                    <h2>SpendWise</h2>
+                </div>
+                <button class="close-sidebar-btn" id="close-sidebar-btn">&times;</button>
+            </div>
+            
+            <div class="workspace-info">
+                <p class="label">KHÔNG GIAN LÀM VIỆC</p>
+                <p class="workspace-name">Tài chính cá nhân</p>
+            </div>
+
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#"><i class="fa-solid fa-chart-pie"></i> Tổng quan</a></li>
+                    <li><a href="#" class="active"><i class="fa-solid fa-arrow-right-left"></i> Giao dịch</a></li>
+                    <li><a href="#"><i class="fa-solid fa-bullseye"></i> Mục tiêu tiết kiệm</a></li>
+                    <li><a href="#"><i class="fa-regular fa-bell"></i> Thông báo</a></li>
+                    <li><a href="#"><i class="fa-regular fa-user"></i> Hồ sơ</a></li>
+                    <li><a href="#"><i class="fa-solid fa-gear"></i> Cài đặt</a></li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <a href="#" class="support-link"><i class="fa-regular fa-circle-question"></i> Trung tâm hỗ trợ</a>
+                <div class="user-profile">
+                    <img src="assets/images/avatar.png" alt="Avatar Minh Anh" class="avatar-img" onerror="this.src='assets/images/avatar.svg'; this.onerror=null;">
+                    <div class="user-info">
+                        <span class="user-name">Minh Anh</span>
+                        <span class="user-role">User</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Header Bar -->
+            <header class="top-header">
+                <div class="header-left">
+                    <button class="mobile-nav-toggle" id="mobile-menu-btn">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="breadcrumb">
+                        <span>User</span> &gt; <span class="current">Giao dịch</span>
+                    </div>
+                </div>
+
+                <div class="header-actions">
+                    <div class="search-quick">
+                        <img src="assets/icons/search.svg" class="icon-svg" alt="Search">
+                        <input type="text" placeholder="Tìm kiếm nhanh">
+                    </div>
+                    <button class="icon-btn"><img src="assets/icons/bell.svg" class="icon-svg" alt="Notification"></button>
+                    <img src="assets/images/avatar.png" alt="User" class="avatar-small-img" onerror="this.src='assets/images/avatar.svg'; this.onerror=null;">
+                </div>
+            </header>
+
+            <!-- Page Title Area -->
+            <section class="page-title-section">
+                <div>
+                    <h1>Giao dịch</h1>
+                    <p class="subtitle">Theo dõi dòng tiền, kiểm tra phân loại và hiểu từng khoản chi.</p>
+                </div>
+                <div class="action-buttons">
+                    <button class="btn btn-outline">
+                        <img src="assets/icons/download.svg" class="icon-svg" alt="Download"> Xuất CSV
+                    </button>
+                    <button class="btn btn-primary" id="open-modal-btn">
+                        <img src="assets/icons/plus.svg" class="icon-svg icon-white" alt="Plus"> Thêm giao dịch
+                    </button>
+                </div>
+            </section>
+
+            <!-- Stat Cards -->
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-title">Giao dịch tháng 06</span>
+                    <h2 class="stat-value" id="stat-count">126</h2>
+                    <span class="stat-desc">Tất cả khoản thu và chi</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-title">Tổng chi tiêu</span>
+                    <h2 class="stat-value">18,4 tr</h2>
+                    <span class="stat-desc">Tháng 06/2025</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-title">Chi cho ăn uống</span>
+                    <h2 class="stat-value">4,8 tr</h2>
+                    <span class="stat-desc">Danh mục cần theo dõi</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-title">Đã phân loại</span>
+                    <h2 class="stat-value">94%</h2>
+                    <span class="stat-desc">Còn giao dịch cần kiểm tra</span>
+                </div>
+            </section>
+
+            <!-- Filter Bar -->
+            <section class="filter-bar">
+                <div class="search-box">
+                    <img src="assets/icons/search.svg" class="icon-svg icon-search-input" alt="Search">
+                    <input type="text" id="search-input" placeholder="Tìm tên giao dịch hoặc ghi chú...">
+                </div>
+                <div class="filter-dropdowns">
+                    <select id="time-filter">
+                        <option value="all">Tháng 06/2025</option>
+                    </select>
+                    <select id="category-filter">
+                        <option value="all">Mọi danh mục</option>
+                        <option value="Thực phẩm">Thực phẩm</option>
+                        <option value="Thu nhập">Thu nhập</option>
+                        <option value="Di chuyển">Di chuyển</option>
+                        <option value="Mua sắm">Mua sắm</option>
+                    </select>
+                    <select id="status-filter">
+                        <option value="all">Tất cả trạng thái</option>
+                        <option value="Đã phân loại">Đã phân loại</option>
+                        <option value="Đã xác nhận">Đã xác nhận</option>
+                        <option value="Chờ duyệt">Chờ duyệt</option>
+                    </select>
+                </div>
+            </section>
+
+            <!-- Content Grid -->
+            <div class="content-grid">
+                <!-- Transaction Table Container -->
+                <section class="table-container">
+                    <div class="table-header-tabs">
+                        <h3>Sổ giao dịch</h3>
+                        <div class="tabs">
+                            <button class="tab-btn active" data-tab="all">Tất cả</button>
+                            <button class="tab-btn" data-tab="expense">Khoản chi</button>
+                            <button class="tab-btn" data-tab="income">Khoản thu</button>
+                            <button class="tab-btn" data-tab="pending">Chờ duyệt</button>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="transaction-table">
+                            <thead>
+                                <tr>
+                                    <th>Giao dịch</th>
+                                    <th>Danh mục</th>
+                                    <th>Số tiền</th>
+                                    <th>Trạng thái</th>
+                                </tr>
+                            </thead>
+                            <tbody id="transaction-list">
+                                <!-- JS Render dữ liệu ở đây -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="pagination">
+                        <span class="page-info" id="page-info">Hiển thị 4 / 126 giao dịch</span>
+                        <div class="page-controls">
+                            <button class="btn-page">Trước</button>
+                            <button class="btn-page active">1</button>
+                            <button class="btn-page">2</button>
+                            <button class="btn-page">3</button>
+                            <button class="btn-page">Sau</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Detail Panel -->
+                <aside class="detail-panel" id="detail-panel">
+                    <div class="panel-header">
+                        <h3>Chi tiết giao dịch</h3>
+                        <span class="badge badge-warning" id="detail-status">Chờ duyệt</span>
+                    </div>
+
+                    <div class="panel-body">
+                        <h2 class="detail-title" id="detail-title">Khoản chưa rõ</h2>
+                        <h1 class="detail-amount negative" id="detail-amount">-275.000 đ</h1>
+
+                        <div class="ai-suggestion">
+                            <p class="ai-label">AI đề xuất phân loại</p>
+                            <div class="form-group">
+                                <label>Danh mục</label>
+                                <select id="detail-category">
+                                    <option>Mua sắm</option>
+                                    <option>Thực phẩm</option>
+                                    <option>Di chuyển</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Ghi chú</label>
+                            <input type="text" placeholder="Thêm ngữ cảnh cho khoản chi">
+                        </div>
+
+                        <div class="info-alert">
+                            <img src="assets/icons/magic-star.svg" class="icon-svg" alt="AI Magic">
+                            <div>
+                                <strong>Bạn có quyền điều chỉnh</strong>
+                                <p>Phân loại AI chỉ là đề xuất. Xác nhận khi bạn đã kiểm tra giao dịch.</p>
+                            </div>
+                        </div>
+
+                        <div class="panel-actions">
+                            <button class="btn btn-success btn-block" id="confirm-btn">Xác nhận phân loại</button>
+                            <button class="btn btn-light btn-block">Sửa giao dịch</button>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+
+            <!-- Tip Footer Banner -->
+            <div class="tip-banner">
+                <img src="assets/icons/magic-star.svg" class="icon-svg" alt="Tip Magic">
+                <div>
+                    <strong>Giữ sổ giao dịch rõ ràng</strong>
+                    <p>Ưu tiên kiểm tra các khoản chờ duyệt. Phân loại chính xác giúp gợi ý AI và báo cáo ngân sách hữu ích hơn.</p>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="main-footer">
+                <p>SpendWise · Tiền rõ ràng, Tương lai nhẹ nhàng</p>
+                <p>Dữ liệu minh họa 06/2025</p>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Modal Thêm giao dịch -->
+    <div class="modal-backdrop" id="add-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Thêm giao dịch mới</h3>
+                <button class="close-btn" id="close-modal-btn">&times;</button>
+            </div>
+            <form id="add-transaction-form">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="input-title">Tên giao dịch</label>
+                        <input type="text" id="input-title" required placeholder="Ví dụ: Siêu thị, Tiền lương...">
+                    </div>
+                    <div class="form-group">
+                        <label for="input-date">Ngày giao dịch</label>
+                        <input type="text" id="input-date" required placeholder="12/06/2025 - 18:32">
+                    </div>
+                    <div class="form-group">
+                        <label for="input-category">Danh mục</label>
+                        <select id="input-category">
+                            <option value="Thực phẩm">Thực phẩm</option>
+                            <option value="Thu nhập">Thu nhập</option>
+                            <option value="Di chuyển">Di chuyển</option>
+                            <option value="Mua sắm">Mua sắm</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="input-amount">Số tiền (nhập dấu âm cho khoản chi)</label>
+                        <input type="number" id="input-amount" required placeholder="-100000 hoặc 15000000">
+                    </div>
+                    <div class="form-group">
+                        <label for="input-status">Trạng thái</label>
+                        <select id="input-status">
+                            <option value="Đã phân loại">Đã phân loại</option>
+                            <option value="Đã xác nhận">Đã xác nhận</option>
+                            <option value="Chờ duyệt">Chờ duyệt</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" id="cancel-modal-btn">Hủy</button>
+                    <button type="submit" class="btn btn-primary">Lưu giao dịch</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
