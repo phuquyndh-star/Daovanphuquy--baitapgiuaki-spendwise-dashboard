@@ -58,8 +58,7 @@ Trang Giao dịch giúp người dùng theo dõi và quản lý dòng tiền cá
 https://www.figma.com/design/Fjf9rmVudHmzQbjT3NuRbp/Untitled?node-id=0-1&p=f&t=NVVSJpZWln2lldFm-0
 
 ## 7. Link Video
-[Chèn link Video trình bày tại đây
-
+(https://youtu.be/7EUmhz6JReA)
 ## 8. Link GitHub
 
 https://github.com/phuquyndh-star
